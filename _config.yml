@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Samuel J. Cliff"
+title                    : "Dr. Samuel J. Cliff"
 title_separator          : "-"
 name                     : &name "Samuel J. Cliff"
 description              : &description "personal description"
@@ -15,6 +15,7 @@ url                      : https://samjcliff.github.io # the base hostname & pro
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "samjcliff/samjcliff.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+logo                     : "uc_berkeley_seal.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
@@ -80,15 +81,17 @@ analytics:
 
 # Site Author
 author:
-  name             : "Samuel J. Cliff"
-  avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
-  location         : "Location"
-  employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
-  email            :
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
+  name             : "Dr. Samuel J. Cliff"
+  avatar           : "profile.jpeg"
+  bio              : "Postdoctoral Research Associate"
+  location         : #"Berkeley, California"
+  employer         : "University of California Berkeley"
+  pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  googlescholar    : "https://scholar.google.com/citations?user=zC2qphEAAAAJ&hl=en"
+  email            : "sjc613@york.ac.uk"
+  github           : "https://github.com/samjcliff"
+  orcid            : "http://orcid.org/0000-0002-1078-3972"
+  researchgate     : "https://www.researchgate.net/profile/Samuel-Cliff-2"
   uri              :
   bitbucket        :
   codepen          :
@@ -96,20 +99,18 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   linkedin         :
-  orcid            : "http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "replacethistwitterhandle"
+  twitter          : 
   vine             :
   weibo            :
   xing             :
