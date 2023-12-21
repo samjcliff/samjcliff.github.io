@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Dr. Samuel J. Cliff"
+title                    : "Samuel J. Cliff, Ph.D"
 title_separator          : "-"
 name                     : &name "Samuel J. Cliff"
 description              : &description "personal description"
@@ -81,7 +81,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Dr. Samuel J. Cliff"
+  name             : "Samuel J. Cliff, Ph.D"
   avatar           : "profile.jpeg"
   bio              : "Postdoctoral Research Associate"
   location         : #"Berkeley, California"
