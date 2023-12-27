@@ -8,23 +8,16 @@ redirect_from:
   - /about.html
 ---
 
-I am a postdoc in the Department of Civil and Environmental Engineering at the University of California Berkeley where I span the [Goldstein](https://nature.berkeley.edu/ahg/) and [Apte](https://apte.berkeley.edu/) research groups. 
+I am a postdoc in the Department of Civil and Environmental Engineering at the University of California Berkeley spanning the [Goldstein](https://nature.berkeley.edu/ahg/) and [Apte](https://apte.berkeley.edu/) research groups. I have a background in atmospheric chemistry and recently completed my Ph.D at the University of York. 
 
+My research involves studying emissions of greenhouse gases and air pollutants in the fight against climate change and poor air quality. Although the negative concequences of these chemical species are directly related to their atmospheric concentration, most policy strategies aim to reduce the concentration or the rate of increase of concentration via the reduction of emissions. The policy decision making process requires accurate, up-to-date data on the magnitude and location of each emission source for the determination of an effective abatement strategy. I combine measurements and theory to directly quantify emissions of these important atmospheric species with a focus on sources with the greatest uncertainty. Specifically, I use state of the art [instrumentation](research) for in-field measurements of atmospheric concentrations in combination with various mathematical techniques to calculate emissions at high spatial and temporal resolution. This involves the measurement of [surface atmosphere exchange](research) via eddy covariance using tower (temporal) and aircraft (spatial) platforms as well as the calculation of [emission factors and source speciation](research) using mobile laboratory measurements. I have also worked on [carbon footprint calculation](research) for the University of York through extensive data collation and analysis.
 
-Previously, I conducted my doctoral (2020-2023) and undergraduate (2016-2020) studies in the Department of Chemistry at the University of York, with a Master's year away the Facility for Airborne Atmospheric Measurements (FAAM) (2019-2020). My research is typically under the atmopsheric science banner in which I aim to contribute to the global issues of poor air quality and climate change. Specifically, I use and develop methodology for the quantification of emissions of atmospheric species which feedback into more accurate and effective policy abatement strategies. For more information, please see the Research section. 
-
-
-For examples of my work, please see the [Research](talks) and [Publications](publications) sections. 
+For more details and examples of my work, please see the [Research](research) and [Publications](publications) sections. 
 
 ## Education
 
 * Ph.D in Chemistry
   * University of York (2020-2023)
-* Master of Chemistry (1*)
+* Master of Chemistry (First class honours with distinction)
   * Facility for Airborne Atmopsheric Measurements (2019-2020)
   * University of York (2016-2020)
-
-
-![img](images/faam.jpeg)
-
-![img](images/bt-view.jpeg)

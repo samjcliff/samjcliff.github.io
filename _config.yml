@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Samuel J. Cliff, Ph.D"
+title                    : "Samuel J. Cliff"
 title_separator          : "-"
 name                     : &name "Samuel J. Cliff"
 description              : &description "personal description"
