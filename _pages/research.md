@@ -6,7 +6,7 @@ author_profile: true
 ---
 
 ## Instrumentation
-<img src="/images/instruments-qual.png" alt="drawing" width="530" style="float: right; padding-left: 25px; padding-top: 40px" />
+<img src="/images/instruments-qual-min.png" alt="drawing" width="530" style="float: right; padding-left: 25px; padding-top: 40px" />
 
 I am an experienced user of different spectroscopic and mass spectrometric techniques for the sensitive, high time resolution measurement of gas phase species in the atmosphere. These include:
 
