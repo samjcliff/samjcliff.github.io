@@ -14,5 +14,5 @@ These are some recent news articles that feature my research:
 6. **Pollutionwatch: London ULEZ cuts traffic fumes but heating is concern**. 24th February 2023, *The Guardian*. [Link](https://www.theguardian.com/environment/2023/feb/24/pollutionwatch-london-ulez-cuts-traffic-fumes-but-heating-is-concern#:~:text=Pollutionwatch%3A%20London%20Ulez%20cuts%20traffic%20fumes%20but%20heating%20is%20concern,-Research%20from%20top&text=Research%20on%20the%20air%20in,top%20of%20the%20BT%20Tower.)
 
 
-<img src="/images/BEng_mag_cover.png" alt="drawing" width="800"/>
+<img src="/images/BEng_mag_cover.png" alt="drawing" width="800" style="display: block; margin: 0 auto;" />
 
