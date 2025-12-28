@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Your Name] | Air Pollution & Environmental Health Research</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #f8f6f1;
+            --accent: #4a6741;
+            --accent-light: #7a9a6d;
+            --accent-warm: #8b6914;
+            --muted: #6b6b6b;
+            --divider: #d4cfc6;
+            --highlight: #e8f0e5;
+            --atmosphere: #d4dde4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 246, 241, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--ink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 0;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background: linear-gradient(to top, rgba(26,26,26,0.9) 0%, rgba(26,26,26,0.4) 50%, transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 4rem;
+            width: 100%;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 4rem;
+            align-items: end;
+            color: white;
+        }
+
+        .hero-portrait {
+            width: 200px;
+            height: 260px;
+            border: 3px solid white;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .hero-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text {
+            max-width: 700px;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #a8d89f;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--accent-light);
+        }
+
+        .hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            max-width: 550px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 103, 65, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--ink);
+        }
+
+        .landscape-banner {
+            width: 100%;
+            height: 50vh;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .landscape-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+
+        .landscape-banner:hover img {
+            transform: scale(1.05);
+        }
+
+        .hero-background-caption {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(26,26,26,0.8);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.8rem;
+            font-style: italic;
+            max-width: 300px;
+            z-index: 1;
+        }
+
+        .landscape-banner-caption {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(26,26,26,0.8);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.8rem;
+            font-style: italic;
+            max-width: 300px;
+        }
+
+        .placeholder-img {
+            background: linear-gradient(135deg, var(--atmosphere) 0%, #b8c5cc 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .placeholder-img::before {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            border: 1px dashed var(--muted);
+            opacity: 0.5;
+        }
+
+        section {
+            padding: 6rem 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image .main-photo {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        .about-image::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 50%;
+            height: 50%;
+            background: var(--highlight);
+            z-index: -1;
+        }
+
+        .about-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .about-content p {
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .affiliation {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+        }
+
+        .affiliation-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            padding: 12px;
+        }
+
+        .affiliation-text {
+            font-size: 0.9rem;
+        }
+
+        .affiliation-text strong {
+            display: block;
+            color: var(--ink);
+        }
+
+        .affiliation-text span {
+            color: var(--muted);
+        }
+
+        .research {
+            background: var(--paper);
+        }
+
+        .research-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 5rem;
+            padding-bottom: 5rem;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .research-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .research-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .research-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .research-figure {
+            position: relative;
+        }
+
+        .research-figure img,
+        .research-figure .placeholder-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border: 1px solid var(--divider);
+        }
+
+        .research-figure-caption {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-style: italic;
+        }
+
+        .research-content {
+            padding: 1rem 0;
+        }
+
+        .research-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--divider);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .research-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .research-content p {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .research-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.4rem 0.8rem;
+            background: var(--highlight);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .research-tag:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 103, 65, 0.3);
+        }
+
+        .research-tag.coming-soon {
+            opacity: 0.6;
+            font-style: italic;
+            cursor: default;
+        }
+
+        .research-tag.coming-soon:hover {
+            background: var(--highlight);
+            color: var(--accent);
+            transform: none;
+            box-shadow: none;
+        }
+
+        .research-landscape {
+            margin: 4rem -4rem;
+            position: relative;
+        }
+
+        .research-landscape img,
+        .research-landscape .placeholder-img {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+        }
+
+        .research-landscape-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 3rem 4rem;
+            background: linear-gradient(to top, rgba(26,26,26,0.8), transparent);
+            color: white;
+        }
+
+        .research-landscape-overlay blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-style: italic;
+            max-width: 700px;
+        }
+
+        .research-landscape-overlay cite {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-style: normal;
+            opacity: 0.8;
+        }
+
+        .publications {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .publications .section-label {
+            color: var(--accent-light);
+        }
+
+        .publication-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: start;
+            transition: all 0.3s ease;
+        }
+
+        .publication-item:hover {
+            padding-left: 1rem;
+            background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+        }
+
+        .publication-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            min-width: 60px;
+        }
+
+        .publication-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            color: var(--paper);
+        }
+
+        .publication-content p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        .publication-journal {
+            font-style: italic;
+            color: var(--accent-light);
+        }
+
+        .publication-link {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .publication-link:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .news {
+            background: white;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            border: 1px solid var(--divider);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .news-card-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-card-image img,
+        .news-card-image .placeholder-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-card-image img {
+            transform: scale(1.05);
+        }
+
+        .news-card-content {
+            padding: 1.5rem;
+        }
+
+        .news-date {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.75rem;
+        }
+
+        .news-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .news-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .cv {
+            background: var(--paper);
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .cv-column h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .cv-item {
+            margin-bottom: 2rem;
+        }
+
+        .cv-item-year {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cv-item-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cv-item-detail {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .cv-download {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--divider);
+        }
+
+        .contact {
+            background: var(--ink);
+            color: var(--paper);
+            text-align: center;
+        }
+
+        .contact .section-label {
+            color: var(--accent-light);
+        }
+
+        .contact-email {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: var(--paper);
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            color: var(--accent-light);
+        }
+
+        .contact-details {
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: left;
+        }
+
+        .contact-item-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item-value {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .social-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-light);
+        }
+
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.4);
+            padding: 2rem 4rem;
+            text-align: center;
+            font-size: 0.8rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .hero-portrait {
+                margin: 0 auto;
+            }
+
+            .hero-label::before {
+                display: none;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .research-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .research-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .research-landscape {
+                margin: 3rem -2rem;
+            }
+
+            .research-landscape-overlay {
+                padding: 2rem;
+            }
+
+            .publication-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .publication-link {
+                justify-self: start;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cv-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-details {
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .contact-item {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-name {
+                font-size: 2rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .landscape-banner {
+                height: 40vh;
+                min-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Samuel J. Cliff</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#cv">CV</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-background">
+            <img src="assets/images/hero-landscape.jpg" alt="City skyline with visible air pollution haze">
+            <div class="hero-background-caption">
+                London, UK skyline with air pollution haze taken from tall measurement tower.
+            </div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-portrait">
+                <img src="assets/images/profile-photo.jpg" alt="Samuel J. Cliff">
+            </div>
+            <div class="hero-text">
+                <div class="hero-label">Postdoctoral Researcher</div>
+                <h1 class="hero-name">Samuel J. Cliff, PhD</h1>
+                <p class="hero-tagline">Advancing air pollution and climate change mitigation through high precision meteorological and atmospheric characterisation. Focussed on translating research into policy action and community education.</p>
+                <div class="hero-cta">
+                    <a href="#research" class="btn btn-primary">View Research</a>
+                    <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <img src="assets/images/about-photo.jpg" alt="Samuel J. Cliff in the field or at a conference" class="main-photo">
+            </div>
+            <div class="about-content reveal">
+                <h2>Tracking emissions implications from local air quality to global climate</h2>
+                <p>I am a Postdoctoral Researcher at the University of California Berkeley in the Department of Civil and Environmental Engineering, working with Professors Allen Goldstein and Josh Apte. My research focuses on air pollution and climate change mitigation.</p>
+                <p>My work consists of making multi-dimensional, high resolution measurements of the atmosphere to identify and quantify emissions sources. I am especially interested in translating research findings into actionable insights for policymakers and affected communities. My studies target over burdened communities, or locations facing specific mitigation actions that require evaluation.</p>
+                <p>I completed my PhD Chemistry at the University of York in 2024, where I worked on urban air pollution emissions quantification. Prior to that, I received my Master's of Chemistry from the University of York where I made gas phase atmospheric measurements onboard the UK's large atmospheric research aircraft all around the world.</p>
+                <div class="affiliation">
+                    <img src="assets/logo/calmap-logo.png" alt="Calmap logo" class="affiliation-logo">
+                    <div class="affiliation-text">
+                        <strong>University of California Berkeley</strong>
+                        <span>Goldstein and Apte Research Groups</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="landscape-banner">
+        <img src="assets/images/landscape-banner-1.jpg" alt="Hohenpeissenberg Meteorological Observatory, Germany">
+        <div class="landscape-banner-caption">
+            Hohenpeissenberg Meteorological Observatory, Germany.
+        </div>
+    </div>
+
+    <section class="research" id="research">
+        <div class="section-header reveal">
+            <div class="section-label">Research Areas</div>
+            <h2 class="section-title">Recent Projects</h2>
+        </div>
+
+        <div class="research-item reveal">
+            <div class="research-figure">
+                <img src="assets/images/research/figure-02.jpg" alt="Map showing PM2.5 concentrations across study region">
+                <p class="research-figure-caption">A mobile laboratory tour at the West Oakland Environmental Indicators Project (WOEIP) community group.</p>
+            </div>
+            <div class="research-content">
+                <div class="research-number">01</div>
+                <h3>Statewide Mobile Monitoring in Disadvantaged Communities</h3>
+                <p>Many communities in California are overburded with air pollution but have minimal or no monitoring in the area to fully understand the sources. I deploy the recently developed CalMAPLab in 20 disadvantaged communities in California for over 1000 hours of mobile monitoring in 2025. With a public-engaged approach, we work closely with local community groups and use lived experiences to drive our measurement strategy.</p>
+                <div class="research-tags">
+                    <span class="research-tag coming-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="research-item reveal">
+            <div class="research-figure">
+                <img src="assets/images/research/figure-00.jpg" alt="Map showing PM2.5 concentrations across study region">
+                <p class="research-figure-caption">A California Gull relaxing on a primary clarifier in a wastewater treatment plant.</p>
+            </div>
+            <div class="research-content">
+                <div class="research-number">02</div>
+                <h3>Investigating urban methane emissions with a multi-platform approach</h3>
+                <p>Urban methane emissions in the U.S. are consistently underestimated in emissions inventories. We use long-term eddy covariance measurements from a tall tower in Berkeley, CA, and target individual facilities with mobile monitoring to try and reduce this discrepancy.</p>
+                <div class="research-tags">
+                    <span class="research-tag coming-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="research-item reveal">
+            <div class="research-figure">
+                <img src="assets/images/research/figure-02.png" alt="Chart showing health outcome associations">
+                <p class="research-figure-caption">The UC Berkeley Mobile Air Pollution Laboratory out measuring in the field in South San Francisco, California.</p>
+            </div>
+            <div class="research-content">
+                <div class="research-number">03</div>
+                <h3>Design, operation and characterisation of a mobile laboratory for community-scale atmospheric research</h3>
+                <p>Air pollution exposure is spatially heterogenous and exhibits hyperlocal variability largely uncaptured by regulatory monitoring sites. I designed and built the UC Berkeley Mobile Air Pollution Laboratory (CalMAPLab) equipped with research grade instrumentation for measurements of over 600 gas and particle phase compounds in the atmosphere. This facility enables real-time quantification and mapping of air pollution at meter level resolution.</p>
+                <div class="research-tags">
+                    <span class="research-tag coming-soon">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="research-item reveal">
+            <div class="research-figure">
+                <img src="assets/images/research/figure-03.jpg" alt="Environmental justice analysis map">
+                <p class="research-figure-caption">The last diesel trains operating out of the Caltrain depot in San Francisco, California, before electrification.</p>
+            </div>
+            <div class="research-content">
+                <div class="research-number">04</div>
+                <h3>Quanitifying the air quality benefits of rail electrification</h3>
+                <p>In August 2024, the diesel-powered trains on the Caltrain commuter rail system between San Francisco and San Jose were fully replaced by electric models over a six week period. I deploy pop-up stationary monitoring sites and perform on-board measurements to quantify the significant air quality benefits of this transition.</p>
+                <div class="research-tags">
+                    <a href="https://pubs.acs.org/doi/full/10.1021/acs.estlett.4c01096" target="_blank" class="research-tag">Read Paper</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="research-item reveal">
+            <div class="research-figure">
+                <img src="assets/images/research/figure-04.jpg" alt="Policy impact analysis chart">
+                <p class="research-figure-caption">Landscape view of the BT Tower Atmospheric Observatory in London, UK.</p>
+            </div>
+            <div class="research-content">
+                <div class="research-number">05</div>
+                <h3>Evolving urban air pollution sources from direct emissions measurements</h3>
+                <p>London, UK, is a world leader in road transport emissions mitigation policy. I make long-term eddy covariance emissions measurements from a tall tower in central London to study the impact of low emissions zones on urban NOx emissions and the sources of emerging importance left in their stead.</p>
+                <div class="research-tags">
+                    <a href="https://pubs.acs.org/doi/full/10.1021/acs.est.4c13276" target="_blank" class="research-tag">Paper 1</a>
+                    <a href="https://acp.copernicus.org/articles/23/2315/2023/" target="_blank" class="research-tag">Paper 2</a>
+                    <a href="https://pubs.acs.org/doi/full/10.1021/acs.est.3c00845" target="_blank" class="research-tag">Paper 3</a>
+                    <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ea/d5ea00039d" target="_blank" class="research-tag">Paper 4</a>
+                    <a href="https://acp.copernicus.org/articles/22/9413/2022/" target="_blank" class="research-tag">Paper 5</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="research-item reveal">
+            <div class="research-figure">
+                <img src="assets/images/research/figure-05.jpg" alt="Policy impact analysis chart">
+                <p class="research-figure-caption">The FAAM Airborne Laboratory sampling ship plume emissions during a campaign in the summer of 2019.</p>
+            </div>
+            <div class="research-content">
+                <div class="research-number">06</div>
+                <h3>Airborne investigation of oil and gas, shipping and wetland emissions</h3>
+                <p>Aircraft-based measurements unlock locations and spatial scales inaccessible to other measurement strategies. I operate the core chemistry instrumentation on > 40 research flights onboard the UK's large atmospheric research aircraft all around the world in 2019 and 2020. Studies ranged from quantifying the importance of Scandanavian wetlands for global CH4 emissions to investigating the pollution and climate impact of new marine diesel sulfur content regulations.</p>
+                <div class="research-tags">
+                    <a href="https://acp.copernicus.org/articles/23/1491/2023/" target="_blank" class="research-tag">Paper 1</a>
+                    <a href="https://royalsocietypublishing.org/rsta/article/380/2215/20210192/112014/Airborne-quantification-of-net-methane-and-carbon" target="_blank" class="research-tag">Paper 2</a>
+                    <a href="https://pubs.rsc.org/en/content/articlehtml/2021/ea/d1ea00041a" target="_blank" class="research-tag">Paper 3</a>
+                    <a href="https://pubs.acs.org/doi/full/10.1021/acs.est.0c04039" target="_blank" class="research-tag">Paper 4</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="landscape-banner">
+        <img src="assets/images/research/research-landscape2.jpg" alt="Clear skies landscape showing hope for cleaner air">
+        <div class="landscape-banner-caption">
+            Smoke haze in Maine, US, following wildfires in Canada 2025.
+        </div>
+    </div>
+
+    <section class="publications" id="publications">
+        <div class="section-header reveal">
+            <div class="section-label">Selected Works</div>
+            <h2 class="section-title">Publications</h2>
+        </div>
+        <div class="publication-list">
+            <div class="publication-item reveal">
+                <span class="publication-year">2025</span>
+                <div class="publication-content">
+                    <h3>Quantifying blackcarbon emissions from traffic and construction in central London using eddy covariance</h3>
+                    <p>Cheng, Z., Hu, D., Flynn, M., Nemitz, E., Langford, B., Drysdale, W., Helfter, C., <strong>Cliff, S. J.</strong>, et al. — <span class="publication-journal">Environ. Sci.: Atmos.</span>, 5, 7, 785-800</p>
+                </div>
+                <a href="https://pubs.rsc.org/en/content/articlelanding/2025/ea/d5ea00039d" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2025</span>
+                <div class="publication-content">
+                    <h3>Dramatic air quality improvements after the complete electrification of a commuter rail system</h3>
+                    <p><strong>Cliff, S. J.</strong>, McNamara-Byrne, H., Goldstein, A. H., Apte, J. S. — <span class="publication-journal">Environ. Sci. Technol. Lett.</span>, 12, 5, 587-592</p>
+                </div>
+                <a href="https://pubs.acs.org/doi/full/10.1021/acs.estlett.4c01096" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2025</span>
+                <div class="publication-content">
+                    <h3>Evidence of heating-dominated urban NO<sub>x</sub> emissions</h3>
+                    <p><strong>Cliff, S. J.</strong>, Drysdale, W. S., Lewis, A. C., Moller, S. J., Helfter, C., Metzger, S., Nemitz, E., et al. — <span class="publication-journal">Environ. Sci. Technol.</span>, 59, 9, 4399-4408</p>
+                </div>
+                <a href="https://pubs.acs.org/doi/full/10.1021/acs.est.4c13276" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2023</span>
+                <div class="publication-content">
+                    <h3>Unreported VOC emissions from road transport including electric vehicles</h3>
+                    <p><strong>Cliff, S. J.</strong>, Lewis, A. C., Shaw, M. D., Lee, J. D., Flynn, M., Andrews, S. J., Hopkins, J. R., Purvis, R. M., Yeoman, A. M. — <span class="publication-journal">Environ. Sci. Technol.</span>, 57, 8026-8034</p>
+                </div>
+                <a href="https://pubs.acs.org/doi/full/10.1021/acs.est.3c00845" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2023</span>
+                <div class="publication-content">
+                    <h3>Pandemic restrictions in 2020 highlight the significance of non-road NO<sub>x</sub> sources in central London</h3>
+                    <p><strong>Cliff, S. J.</strong>, Drysdale, W. S., Lee, J. D., Helfter, C., Nemitz, E., Metzger, S., Barlow, J. — <span class="publication-journal">Atmos. Chem. Phys.</span>, 23, 2315-2330</p>
+                </div>
+                <a href="https://acp.copernicus.org/articles/23/2315/2023/" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2023</span>
+                <div class="publication-content">
+                    <h3>Flaring efficiencies and NO<sub>x</sub> emission ratios measured for offshore oil and gas facilities in the North Sea</h3>
+                    <p>Shaw, J. T., Foulds, A., Wilde, S. E., Barker, P., Squires, S., Lee, J., Purvis, R. M., Burton, R., Colfescu, I., Mobbs, S., <strong>Cliff, S. J.</strong>, et al. — <span class="publication-journal">Atmos. Chem. Phys.</span>, 23, 1491-1509</p>
+                </div>
+                <a href="https://acp.copernicus.org/articles/23/1491/2023/" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2022</span>
+                <div class="publication-content">
+                    <h3>Eddy covariance measurements highlight sources of nitrogen oxide emissions missing from inventories for central London</h3>
+                    <p>Drysdale, W. S., Vaughan, A. R., Squires, F. A., <strong>Cliff, S. J.</strong>, Metzger, S., Durden, D., Pingintha-Durden, N., et al. — <span class="publication-journal">Atmos. Chem. Phys.</span>, 22, 9413-9433</p>
+                </div>
+                <a href="https://acp.copernicus.org/articles/22/9413/2022/" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2022</span>
+                <div class="publication-content">
+                    <h3>Airborne quantification of net methane and carbon dioxide fluxes from European Arctic wetlands in Summer 2019</h3>
+                    <p>Barker, P., Allen, G., Pitt, J. R., Bauguitte, S. J. B., Pasternak, D., <strong>Cliff, S. J.</strong>, France, J. L., et al. — <span class="publication-journal">Philos. Trans. Royal Soc. A</span>, 380, 2215</p>
+                </div>
+                <a href="https://royalsocietypublishing.org/rsta/article/380/2215/20210192/112014/Airborne-quantification-of-net-methane-and-carbon" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2021</span>
+                <div class="publication-content">
+                    <h3>Ozone production and precursor emission from wildfires in Africa</h3>
+                    <p>Lee, J. D., Squires, F., Sherwen, T., Wilde, S. E., <strong>Cliff, S. J.</strong>, Bauguitte, S. J. B., Reed, C., Barker, P., et al. — <span class="publication-journal">Environ. Sci.: Atmos.</span>, 1, 524-542</p>
+                </div>
+                <a href="https://pubs.rsc.org/en/content/articlehtml/2021/ea/d1ea00041a" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2020</span>
+                <div class="publication-content">
+                    <h3>Airborne measurements of fire emission factors for African biomass burning sampled during the MOYA campaign</h3>
+                    <p>Barker, P. A., Allen, G., Bannan, T. J., Nisbet, E. G., Pitt, J. R., Bauguitte, S. J. B., Pasternak, D., <strong>Cliff, S. J.</strong>, et al. — <span class="publication-journal">Atmos. Chem. Phys.</span>, 20, 15443-15459</p>
+                </div>
+                <a href="https://acp.copernicus.org/articles/20/15443/2020/acp-20-15443-2020.html" class="publication-link">Read Paper</a>
+            </div>
+            <div class="publication-item reveal">
+                <span class="publication-year">2020</span>
+                <div class="publication-content">
+                    <h3>Characterizing the particle composition and cloud condensation nuclei from shipping emission in Western Europe</h3>
+                    <p>Yu, C., Pasternak, D., Lee, J., Yang, M., Bell, T. G., Bower, K. N., Wu, H., Liu, D., Reed, C., Bauguitte, S. J. B., <strong>Cliff, S. J.</strong>, et al. — <span class="publication-journal">Environ. Sci. & Technol.</span>, 54, 15604-15612</p>
+                </div>
+                <a href="https://pubs.acs.org/doi/full/10.1021/acs.est.0c04039" class="publication-link">Read Paper</a>
+            </div>
+            
+            <div class="section-header reveal" style="margin-top: 4rem; margin-bottom: 2rem; text-align: left;">
+                <div class="section-label" style="color: var(--accent-light);">Coming Soon</div>
+            </div>
+            
+            <div class="publication-item reveal" style="opacity: 0.8;">
+                <span class="publication-year">In Review</span>
+                <div class="publication-content">
+                    <h3>Design, operation and characterization of a mobile laboratory for community-scale atmospheric research</h3>
+                    <p><strong>Cliff, S. J.</strong>, et al. — <span class="publication-journal">Submitted, Atmospheric Measurement Techniques</span></p>
+                </div>
+            </div>
+            <div class="publication-item reveal" style="opacity: 0.8;">
+                <span class="publication-year">In Review</span>
+                <div class="publication-content">
+                    <h3>Urban Natural Gas Seasonality is Associated with Commercial Areas in Berkeley, California</h3>
+                    <p>Byrne, H. M., Katz, E., <strong>Cliff, S. J.</strong>, et al. — <span class="publication-journal">Submitted, Environmental Science & Technology</span></p>
+                </div>
+            </div>
+            <div class="publication-item reveal" style="opacity: 0.8;">
+                <span class="publication-year">In Review</span>
+                <div class="publication-content">
+                    <h3>Field-based quantification of non-exhaust emissions using gas dilution and machine-learning techniques</h3>
+                    <p>Sheehan, A., Hicks, W., Tremper, A. H., Preistman, M., Punter, P., Kelly, F., Font, A., Alastuey, A., Minguillon, M. C., Querol, X., Via, M., Guervara, M., Allan, J., Coe, H., Flynn, M., Watson, N., Bloss, W., Hou, S., Harrison, R., <strong>Cliff, S. J.</strong>, et al. — <span class="publication-journal">Submitted, Transportation Research Part D: Transport and Environment</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news" id="news">
+        <div class="section-header reveal">
+            <div class="section-label">Updates</div>
+            <h2 class="section-title">News & Media</h2>
+        </div>
+        <div class="news-grid">
+            <a href="https://news.berkeley.edu/2025/04/16/electric-trains-are-quieter-more-reliable-than-diesel-new-study-finds-theyre-healthier-too/" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="news-card reveal">
+                    <div class="news-card-image">
+                        <img src="assets/images/news/news-01.jpg" alt="News story image">
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-date">April 2025</div>
+                        <h3>Electric trains are quieter, more reliable than diesel. New study finds they're healthier, too.</h3>
+                        <p>UC Berkeley News</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://engineering.berkeley.edu/magazine/winter-2024/" target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="news-card reveal">
+                    <div class="news-card-image">
+                        <img src="assets/images/news/news-02.jpg" alt="Conference presentation">
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-date">November 2024</div>
+                        <h3>Unequal burden: Addressing air quality disparities through data and policy</h3>
+                        <p>UC Berkeley Engineering</p>
+                    </div>
+                </div>
+            </a>
+            <a href="https://www.theguardian.com/environment/2023/feb/24/pollutionwatch-london-ulez-cuts-traffic-fumes-but-heating-is-concern#:~:text=Pollutionwatch%3A%20London%20Ulez%20cuts%20traffic%20fumes%20but%20heating%20is%20concern,-Research%20from%20top&text=Research%20on%20the%20air%20in,top%20of%20the%20BT%20Tower." target="_blank" style="text-decoration: none; color: inherit;">
+                <div class="news-card reveal">
+                    <div class="news-card-image">
+                        <img src="assets/images/news/news-03.jpg" alt="Media interview">
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-date">February 2023</div>
+                        <h3>Pollutionwatch: London Ulez cuts traffic fumes but heating is concern</h3>
+                        <p>The Guardian</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="cv" id="cv">
+        <div class="section-header reveal">
+            <div class="section-label">Background</div>
+            <h2 class="section-title">Curriculum Vitae</h2>
+        </div>
+        <div class="cv-container">
+            <div class="cv-column reveal">
+                <h3>Education</h3>
+                <div class="cv-item">
+                    <div class="cv-item-year">2024</div>
+                    <div class="cv-item-title">Ph.D. in Chemistry</div>
+                    <div class="cv-item-detail">University of York</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-item-year">2020</div>
+                    <div class="cv-item-title">Master of Chemistry</div>
+                    <div class="cv-item-detail">University of York</div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">Awards & Fellowships</h3>
+                <div class="cv-item">
+                    <div class="cv-item-year">2023</div>
+                    <div class="cv-item-title">Kathleen Mary Stott Prize</div>
+                    <div class="cv-item-detail">University of York</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-item-year">2020</div>
+                    <div class="cv-item-title">Whinfield Medal</div>
+                    <div class="cv-item-detail">University of York</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-item-year">2020</div>
+                    <div class="cv-item-title">Graduate Researcher Fellowship: £90k</div>
+                    <div class="cv-item-detail">National Environmental Research Council</div>
+                </div>
+            </div>
+            <div class="cv-column reveal">
+                <h3>Experience</h3>
+                <div class="cv-item">
+                    <div class="cv-item-year">2024–Present</div>
+                    <div class="cv-item-title">Postdoctoral Researcher</div>
+                    <div class="cv-item-detail">University of California Berkeley</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-item-year">2020–2024</div>
+                    <div class="cv-item-title">Graduate Researcher</div>
+                    <div class="cv-item-detail">University of York</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-item-year">[2019]–[2020]</div>
+                    <div class="cv-item-title">Research Student</div>
+                    <div class="cv-item-detail">Facility for Airborne Atmospheric Measurements</div>
+                </div>
+
+                <h3 style="margin-top: 3rem;">Skills & Methods</h3>
+                <div class="cv-item">
+                    <div class="cv-item-title">Computing & Data Analysis</div>
+                    <div class="cv-item-detail">R, Python, Linux, SQL/DuckDB, Git, Docker, HPC</div>
+                </div>
+                <div class="cv-item">
+                    <div class="cv-item-title">Measurement Techniques</div>
+                    <div class="cv-item-detail">Mass spectrometry, optical spectroscopy, chromatography, electrical mobility spectrometry</div>
+                </div>
+            </div>
+            <div class="cv-download reveal">
+                <a href="assets/docs/Cliff_Samuel_CV_Dec_2025.pdf" class="btn btn-primary" target="_blank">Download Full CV (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="section-header reveal">
+            <div class="section-label">Get in Touch</div>
+            <h2 class="section-title">Contact</h2>
+        </div>
+        <a href="mailto:samcliff@berkeley.edu" class="contact-email reveal">samcliff@berkeley.edu</a>
+        <div class="contact-details reveal">
+            <div class="contact-item">
+                <div class="contact-item-label">Office</div>
+                <div class="contact-item-value">Davis Hall, Room 628<br>University of California, Berkeley</div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-item-label">Research Group</div>
+                <div class="contact-item-value">Goldstein and Apte Labs<br>Department of Civil and Environmental Engineering</div>
+            </div>
+        </div>
+        <div class="social-links reveal">
+            <a href="https://scholar.google.com/citations?hl=en&user=WotxYS8AAAAJ">Google Scholar</a>
+            <a href="https://orcid.org/0000-0002-1078-3972">ORCID</a>
+            <a href="https://www.linkedin.com/in/samuel-cliff-phd-2ab27716a/">LinkedIn</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Samuel J. Cliff, PhD. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
